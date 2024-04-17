@@ -1,0 +1,9 @@
+import requests
+from bs4 import BeautifulSoup as BS
+
+r = requests.get("https://menu.sttec.yar.ru/timetable/rasp_second.html")
+html = BS(r.content, 'html.parser')
+
+for el in html.select(".table > .tbody"): 
+    title = el.select(".tbody")
+    print( title[0].text)
